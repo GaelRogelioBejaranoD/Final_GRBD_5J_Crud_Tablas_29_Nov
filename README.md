@@ -6,7 +6,7 @@ Gimnasio CRUD Tablas en Django
 
 
 - Clientes
-- ![image](https://github.com/user-attachments/assets/bbace2a5-0536-41f7-9ac3-0fa18df54257)
+- ![image](https://github.com/user-attachments/assets/03642956-75b8-4674-8aec-87a91bce246a)
 - ![image](https://github.com/user-attachments/assets/254327af-c3fc-45f0-b9bc-8c4f60184a22)
 
 - Membresia
