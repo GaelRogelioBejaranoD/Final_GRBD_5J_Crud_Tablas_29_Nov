@@ -2,7 +2,8 @@
 Gimnasio CRUD Tablas en Django
 ## Proyecto Final
 - Inicio
-- ![image](https://github.com/user-attachments/assets/bea3c691-1848-43c7-aabd-aafd45cbb4c5)
+- ![image](https://github.com/user-attachments/assets/58775a95-9b81-477e-8ea8-693f69bdb57a)
+
 
 - Clientes
 - ![image](https://github.com/user-attachments/assets/bbace2a5-0536-41f7-9ac3-0fa18df54257)
