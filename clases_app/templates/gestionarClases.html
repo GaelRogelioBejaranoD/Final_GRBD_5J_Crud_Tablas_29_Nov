@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h1>Registrar Clase</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarClase/" method="POST"> {% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_clase" name="txtid_clase" class="form-control" placeholder="ID Clase" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre_clase" name="txtnombre_clase" class="form-control" placeholder="Nombre de la Clase" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txthorario" name="txthorario" class="form-control" placeholder="Horario" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="numcapacidad" name="numcapacidad" class="form-control" placeholder="Capacidad" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtubicacion" name="txtubicacion" class="form-control" placeholder="Ubicación" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="numcosto" name="numcosto" class="form-control" placeholder="Costo" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="numid_entrenador" name="numid_entrenador" class="form-control" placeholder="ID Entrenador" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-8 col-xl-8">
+      <img class="w-50" src="{% static 'img/clases.png' %}" width="400" height="400" alt="">
+        <h1>Listado de Clases</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Clase</th>
+                        <th scope="col">Horario</th>
+                        <th scope="col">Capacidad</th>
+                        <th scope="col">Ubicación</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">ID Entrenador</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in misclases %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ c.id_clase }}</td>
+                        <td>{{ c.nombre_clase }}</td>
+                        <td>{{ c.horario }}</td>
+                        <td>{{ c.capacidad }}</td>
+                        <td>{{ c.ubicacion }}</td>
+                        <td>{{ c.costo }}</td>
+                        <td>{{ c.id_entrenador }}</td>
+                        <td><a href="seleccionarClase/{{ c.id_clase }}" class="btn btn-info">Editar</a></td>
+                        <td><a href="borrarClase/{{ c.id_clase }}" class="btn btn-danger">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

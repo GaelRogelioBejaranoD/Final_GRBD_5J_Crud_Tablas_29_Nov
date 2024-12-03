@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarClase/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_clase" name="txtid_clase" class="form-control" value="{{ misclases.id_clase }}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre_clase" name="txtnombre_clase" class="form-control" value="{{ misclases.nombre_clase }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txthorario" name="txthorario" class="form-control" value="{{ misclases.horario }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="numcapacidad" name="numcapacidad" class="form-control" value="{{ misclases.capacidad }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtubicacion" name="txtubicacion" class="form-control" value="{{ misclases.ubicacion }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="numcosto" name="numcosto" class="form-control" value="{{ misclases.costo }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="numid_entrenador" name="numid_entrenador" class="form-control" value="{{ misclases.id_entrenador }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

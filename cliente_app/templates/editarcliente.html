@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+    <!-- la tarjeta card -->
+    <div class="card"><!-- tarjeta -->
+        <div class="card-body"> 
+          <form action="/editarCliente/" method="POST"> {% csrf_token %}<!-- formulario -->
+            
+            <div class="form-group">
+              <input type="number" id="txtcodigo" name="txtcodigo" class="form-control"
+              value="{{misclientes.id_cliente}}" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{misclientes.nombre}}"  maxLength="100" required >
+            </div>
+
+            <div class="form-group py-3">
+              <input type="text" id="txtemail" name="txtemail" class="form-control"
+              value="{{misclientes.email}}"  maxLength="50" required >
+            </div>
+
+            <div class="form-group py-2">
+              <input type="input" id="numtelefono" name="numtelefono" class="form-control"
+              value="{{misclientes.telefono}}"  required >
+            </div>
+
+            <div class="form-group py-3">
+              <label for="chkactivo">Membresia Activa: </label>
+              <input type="checkbox" id="chkactivo" name="chkactivo" class="form-check-input" {% if misclientes.membresia_activa %} checked {% endif %} >
+            </div>
+
+            <div class="form-group">
+              <input type="number" id="numdias" name="numdias" class="form-control"
+              value="{{misclientes.dias_restantes_mem}}" required >
+            </div>
+
+            <div class="form-group py-2">
+              <input type="date" id="dateregistro" name="dateregistro" class="form-control"
+              value="{{fecha_fin}}" required >
+            </div>
+
+            
+            <div class="form-group py-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form> <!-- formulario -->
+        </div>
+
+    <!-- fin la tarjeta card -->
+</div> <!-- columna -->
+
+</div> <!-- la fila -->
+
+
+{% endblock  %}
