@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h1>Registrar Producto</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarProducto/" method="POST"> {% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_producto" name="txtid_producto" class="form-control" placeholder="ID Producto" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre_producto" name="txtnombre_producto" class="form-control" placeholder="Nombre del Producto" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <textarea id="txtdescripcion" name="txtdescripcion" class="form-control" placeholder="Descripción del Producto" required></textarea>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="numprecio" name="numprecio" class="form-control" placeholder="Precio" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="numstock" name="numstock" class="form-control" placeholder="Stock" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txttipo" name="txttipo" class="form-control" placeholder="Tipo de Producto" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-8 col-xl-8">
+      <img class="w-50" src="{% static 'img/producto.jpeg' %}" width="400" height="400" alt="">
+        <h1>Listado de Productos</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Tipo</th>
+                        <th colspan="2">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in misproductos %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ p.id_producto }}</td>
+                        <td>{{ p.nombre_producto }}</td>
+                        <td>{{ p.descripcion }}</td>
+                        <td>{{ p.precio }}</td>
+                        <td>{{ p.stock }}</td>
+                        <td>{{ p.tipo }}</td>
+                        <td><a href="seleccionarProducto/{{ p.id_producto }}" class="btn btn-info">Editar</a></td>
+                        <td><a href="borrarProducto/{{ p.id_producto }}" class="btn btn-danger">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
