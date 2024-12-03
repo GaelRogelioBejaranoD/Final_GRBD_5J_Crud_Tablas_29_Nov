@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarEntrenador/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_entrenador" name="txtid_entrenador" class="form-control" value="{{ misentrenadores.id_entrenador }}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtnombre" name="txtnombre" class="form-control" value="{{ misentrenadores.nombre }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtespecialidad" name="txtespecialidad" class="form-control" value="{{ misentrenadores.especialidad }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="numtelefono" name="numtelefono" class="form-control" value="{{ misentrenadores.telefono }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="email" id="txtemail" name="txtemail" class="form-control" value="{{ misentrenadores.email }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="checkbox" id="chkestado" name="chkestado" {% if misentrenadores.estado %} checked {% endif %}> <label for="chkestado">Estado</label>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txthorario" name="txthorario" class="form-control" value="{{ misentrenadores.horario }}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <h1>Registrar Membresía</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarMembresia/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group py-2">
+                        <input type="number" id="txtid_mem" name="txtid_mem" class="form-control" placeholder="ID Membresía" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_cliente" name="txtid_cliente" class="form-control" placeholder="ID Cliente" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="txtduracion" name="txtduracion" class="form-control" placeholder="Duración (meses)" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txttipo" name="txttipo" class="form-control" placeholder="Tipo" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtcosto" name="txtcosto" class="form-control" placeholder="Costo" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtdescuentos" name="txtdescuentos" class="form-control" placeholder="Descuentos" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-8 col-xl-8">
+        <img class="w-50" src="{% static 'img/membresia.jpeg' %}" width="400" height="400" alt="">
+        <h1>Listado de Membresías</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Duración</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Descuentos</th>
+                        <th colspan="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in mismembresias %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ m.id_mem }}</td>
+                        <td>{{ m.id_cliente }}</td>
+                        <td>{{ m.duracion }}</td>
+                        <td>{{ m.tipo }}</td>
+                        <td>{{ m.costo }}</td>
+                        <td>{{ m.descuentos }}</td>
+                        <td><a href="seleccionarMembresia/{{ m.id_mem }}" class="btn btn-info">Editar</a></td>
+                        <td><a href="borrarMembresia/{{ m.id_mem }}" class="btn btn-danger">Borrar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

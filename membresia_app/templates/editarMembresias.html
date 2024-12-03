@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarMembresia/" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_mem" name="txtid_mem" class="form-control" value="{{mismembresias.id_mem}}" readonly required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="txtid_cliente" name="txtid_cliente" class="form-control" value="{{mismembresias.id_cliente}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="number" id="txtduracion" name="txtduracion" class="form-control" value="{{mismembresias.duracion}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txttipo" name="txttipo" class="form-control" value="{{mismembresias.tipo}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtcosto" name="txtcosto" class="form-control" value="{{mismembresias.costo}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <input type="text" id="txtdescuentos" name="txtdescuentos" class="form-control" value="{{mismembresias.descuentos}}" required>
+                    </div>
+                    <div class="form-group py-3">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
